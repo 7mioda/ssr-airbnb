@@ -4,6 +4,7 @@ import { USER_STATUS } from '../../graphql/client/queries/userStatus';
 import { MENU_STATUS } from '../../graphql/client/queries/menuStatus';
 import { TOGGLE_USER_STATUS } from '../../graphql/client/mutations/toggleUserStatus';
 import { CONNECTED_USER } from '../../graphql/client/queries/connectedUser';
+import { TOGGLE_MENU } from '../../graphql/client/mutations/toggleMenu'
 
 const Header = ({
                   className,
@@ -79,6 +80,9 @@ const Header = ({
 export default compose(
   graphql(TOGGLE_USER_STATUS, {
     props: ({ mutate }) => ({ toggleUserStatus: () => mutate() }),
+  }),
+  graphql(TOGGLE_MENU, {
+    props: ({ mutate }) => ({ toggleMenu: (dropDown) => mutate({ variables: { dropDown } }) }),
   }),
   graphql(MENU_STATUS, ({
     props: ({ data: { menuStatus: { dropDown } } }) => ({ dropDown }),
