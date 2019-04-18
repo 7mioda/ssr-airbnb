@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
 export default (component) => styled(component)`
-    width: ${({ width }) => width };
-    height: ${({ height }) => height };
+    width: ${({ width }) => width};
+    height: ${({ height }) => height};
     border-radius: 4px;
     position: relative;
     overflow: hidden;
