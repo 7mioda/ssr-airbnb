@@ -1,8 +1,8 @@
 import { configure, addParameters } from '@storybook/react';
 
 function loadStories() {
-  require('../stories/index.js');
-  require('../stories/Slider.js');
+  require('../stories/index.jsx');
+  require('../stories/Slider.jsx');
   // You can require as many stories as you need.
 }
 
