@@ -40,6 +40,7 @@ export default (component) => styled(component)`
       color: #484863;
       font-weight: 700;
       border-style: none;
+      outline:none;
     }
     
     .search-text::placeholder {
