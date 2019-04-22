@@ -1,3 +1,4 @@
+import React from 'react';
 import withStyle from './withStyle';
 
 const Footer = ({ className }) => (

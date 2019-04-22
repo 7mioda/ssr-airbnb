@@ -4,9 +4,9 @@ import Slider from '../components/Slider/Slider';
 
 const images = [
   'https://picsum.photos/800/800',
+  'https://picsum.photos/400/800',
   'https://picsum.photos/800/800',
-  'https://picsum.photos/800/800',
-  'https://picsum.photos/800/800',
+  'https://picsum.photos/500/800',
 ];
 
 storiesOf('Slider', module).add('Slider with Images', () => (

@@ -19,7 +19,7 @@ const Header = ({
 }) => (
   <div
     className={`${className}`}
-    onClick={event => {
+    onClick={(event) => {
       event.stopPropagation();
       toggleMenu('none');
     }}
@@ -38,7 +38,7 @@ const Header = ({
     <nav className="landing-nav">
       <div
         className="nav-item"
-        onClick={event => {
+        onClick={(event) => {
           event.stopPropagation();
           toggleMenu('host');
         }}
@@ -100,7 +100,7 @@ const Header = ({
       {connected && (
         <div
           className="nav-item"
-          onClick={event => {
+          onClick={(event) => {
             event.stopPropagation();
             toggleMenu('user');
           }}
