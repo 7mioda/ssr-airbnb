@@ -9,7 +9,6 @@
     "build": "next build",
     "start": "next start",
     "storybook": "start-storybook",
-    "prelint:js": "npm run format:all",
     "lint:js": "eslint ./*/*.jsx --fix",
     "format:all": "prettier --write *.js"
   },
