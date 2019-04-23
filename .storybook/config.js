@@ -1,9 +1,10 @@
 import { configure, addParameters } from '@storybook/react';
 
 function loadStories() {
-  require('../stories/index.jsx');
+  require('../stories/Button.jsx');
   require('../stories/Slider.jsx');
   require('../stories/Carousel.jsx');
+  require('../stories/Input.jsx');
   // You can require as many stories as you need.
 }
 
