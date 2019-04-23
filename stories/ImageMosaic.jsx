@@ -11,5 +11,5 @@ const images = [
 ];
 
 storiesOf('Images Mosaic', module).add('Images Mosaic with Images', () => (
-  <ImageMosaic images={images} height="100vh" width="100%" />
+  <ImageMosaic images={images} height="95vh" width="100%" />
 ));

@@ -6,6 +6,11 @@ export default (component) => styled(component)`
   border-top: 1px solid rgb(72, 72, 72);
   border-bottom: 1px solid rgb(72, 72, 72);
   backface-visibility: hidden;
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
   &:hover {
     img {
       -webkit-filter: grayscale(75%); /* For Webkit browsers */
