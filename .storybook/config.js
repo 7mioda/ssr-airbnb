@@ -1,4 +1,5 @@
 import { configure, addParameters } from '@storybook/react';
+import '../static/icon.css'
 
 function loadStories() {
   require('../stories/Button.jsx');
