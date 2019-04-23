@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import withStyle from './withStyle';
 
-const Carousel = ({ children, className, width }) => {
+const Carousel = ({
+  children, className, width, time, auto, indicators,
+}) => {
   const [index, setIndex] = useState(0);
   const childrenView = children.map((child) => (
     <li className="slide">{child}</li>
@@ -15,6 +17,26 @@ const Carousel = ({ children, className, width }) => {
       setIndex(targetIndex);
     }
   };
+  const autoSlide = () => setTimeout(() => {
+    moveToSlide(index + 1);
+  }, time || 5000);
+  let id;
+  if (auto) {
+    id = autoSlide();
+  }
+  const indicatorsView = children.map((child, i) => (
+    <button
+      type="button"
+      className={`indicator ${index === i ? 'active' : ''}`}
+      onClick={() => {
+        if (auto) {
+          clearTimeout(id);
+        }
+        setIndex(i);
+      }}
+    />
+  ));
+
   return (
     <div className={className}>
       <button
@@ -38,6 +60,9 @@ const Carousel = ({ children, className, width }) => {
       >
         <i className="icon-chevron-left" />{' '}
       </button>
+      {indicators && (
+        <div className="indicator-container">{indicatorsView}</div>
+      )}
     </div>
   );
 };
