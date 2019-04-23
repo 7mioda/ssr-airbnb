@@ -42,7 +42,12 @@ const Carousel = ({
       <button
         type="button"
         className="slide__button slide__button--next"
-        onClick={() => moveToSlide(index + 1)}
+        onClick={() => {
+          if (auto) {
+            clearTimeout(id);
+          }
+          moveToSlide(index + 1);
+        }}
       >
         {' '}
         <i className="icon-chevron-right" />{' '}
@@ -56,7 +61,12 @@ const Carousel = ({
       <button
         type="button"
         className="slide__button slide__button--previous icon-right-arrow"
-        onClick={() => moveToSlide(index - 1)}
+        onClick={() => {
+          if (auto) {
+            clearTimeout(id);
+          }
+          moveToSlide(index - 1);
+        }}
       >
         <i className="icon-chevron-left" />{' '}
       </button>
