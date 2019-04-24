@@ -1,10 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect  } from 'react';
 import withStyle from './withStyle';
 
 const Carousel = ({
-  children, className, width, time, auto, indicators,
+  children, className, time, auto, indicators, defaultIndex,
 }) => {
-  const [index, setIndex] = useState(0);
+  const [index, setIndex] = useState(defaultIndex || 0);
+  const [width, setWidth] = useState(0);
+  useEffect(() => {
+    if (auto) {
+      clearTimeout(id);
+    }
+    const carousel = window.document.querySelector('#carousel');
+    setWidth(carousel.clientWidth);
+    return () => undefined;
+  }, [auto]);
   const childrenView = children.map((child) => (
     <li className="slide">{child}</li>
   ));
@@ -36,9 +45,8 @@ const Carousel = ({
       }}
     />
   ));
-
-  return (
-    <div className={className}>
+  return console.log(id) || (
+    <div className={className} id="carousel">
       <button
         type="button"
         className="slide__button slide__button--next"

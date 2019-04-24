@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
 export default (component) => styled(component)`
-  width: ${({ width }) => width}px;
-  height: ${({ height }) => height}px;
+  width: 100%;
+  height: 100%;
   position: relative;
   overflow: hidden;
   * {
@@ -10,17 +10,20 @@ export default (component) => styled(component)`
     padding: 0;
   }
   .slide * {
-    width: ${({ width }) => width}px;
-    height: ${({ height }) => height}px;
     object-fit: cover;
+    width: 100%;
+    height: 100%;
   }
 
   .slide {
-    display: inline;
+    display: inline-block;
+    width: calc(100% / ${({ children }) => children.length});
+    height: 100%;
   }
 
   .slide__track {
-    width: ${({ width, children }) => children.length * width}px;
+    width: calc(100% * ${({ children }) => children.length});
+    height: 100%;
     list-style: none;
     padding: 0;
     margin: 0;
@@ -46,7 +49,7 @@ export default (component) => styled(component)`
   }
 
   .slide__button--previous {
-    left: 0px;
+    left: 0;
   }
 
   .indicator-container {

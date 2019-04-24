@@ -2,33 +2,47 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import Carousel from '../components/Carousel/Carousel';
 
+import imageFile from '../static/img/1.jpg';
+import imageFile1 from '../static/img/2.jpg';
+import imageFile2 from '../static/img/3.jpg';
+import imageFile3 from '../static/img/4.jpg';
+import imageFile4 from '../static/img/5.jpg';
+import imageFile5 from '../static/img/6.jpg';
+
 storiesOf('Carousel', module)
   .add('Carousel with Images', () => (
-    <Carousel height="400" auto indicators width="1024">
-      <img src="https://picsum.photos/420/800" alt="" />
-      <img src="https://picsum.photos/800/800" alt="" />
-      <img src="https://picsum.photos/500/800" alt="" />
-      <img src="https://picsum.photos/600/800" alt="" />
-      <img src="https://picsum.photos/600/800" alt="" />
-      <img src="https://picsum.photos/600/800" alt="" />
-      <img src="https://picsum.photos/600/800" alt="" />
-    </Carousel>
+    <div style={{ width: '1024px', height: '500px' }}>
+      <Carousel>
+        <img src={imageFile} alt="" />
+        <img src={imageFile1} alt="" />
+        <img src={imageFile2} alt="" />
+        <img src={imageFile3} alt="" />
+        <img src={imageFile4} alt="" />
+        <img src={imageFile5} alt="" />
+      </Carousel>
+    </div>
   ))
   .add('Rectangular Carousel with Images', () => (
-    <Carousel height="400" width="400">
-      <img src="https://picsum.photos/420/800" alt="" />
-      <img src="https://picsum.photos/800/800" alt="" />
-      <img src="https://picsum.photos/500/800" alt="" />
-      <img src="https://picsum.photos/600/800" alt="" />
-      <img src="https://picsum.photos/600/800" alt="" />
-    </Carousel>
+    <div style={{ width: '500px', height: '500px' }}>
+      <Carousel height="400" width="400">
+        <img src={imageFile} alt="" />
+        <img src={imageFile1} alt="" />
+        <img src={imageFile2} alt="" />
+        <img src={imageFile3} alt="" />
+        <img src={imageFile4} alt="" />
+        <img src={imageFile5} alt="" />
+      </Carousel>
+    </div>
   ))
-  .add('Rectangular Carousel with auto Slide Images', () => (
-    <Carousel auto indicators height="400" width="400">
-      <img src="https://picsum.photos/420/800" alt="" />
-      <img src="https://picsum.photos/800/800" alt="" />
-      <img src="https://picsum.photos/500/800" alt="" />
-      <img src="https://picsum.photos/600/800" alt="" />
-      <img src="https://picsum.photos/600/800" alt="" />
-    </Carousel>
+  .add('Carousel with auto Slide Images and indicators', () => (
+    <div style={{ width: '1024px', height: '500px' }}>
+      <Carousel indicators auto>
+        <img src={imageFile} alt="" />
+        <img src={imageFile1} alt="" />
+        <img src={imageFile2} alt="" />
+        <img src={imageFile3} alt="" />
+        <img src={imageFile4} alt="" />
+        <img src={imageFile5} alt="" />
+      </Carousel>
+    </div>
   ));

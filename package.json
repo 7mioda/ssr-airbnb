@@ -8,7 +8,7 @@
     "dev": "next",
     "build": "next build",
     "start": "next start",
-    "storybook": "start-storybook -s public ./static",
+    "storybook": "start-storybook -s ./static -p 9001",
     "lint:js": "eslint ./*/*.jsx --fix",
     "format:all": "prettier --write *.js"
   },
