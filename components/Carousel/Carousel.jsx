@@ -1,8 +1,13 @@
-import React, { useState, useEffect  } from 'react';
+import React, { useState, useEffect } from 'react';
 import withStyle from './withStyle';
 
 const Carousel = ({
-  children, className, time, auto, indicators, defaultIndex,
+  children,
+  className,
+  time,
+  auto,
+  indicators,
+  defaultIndex,
 }) => {
   const [index, setIndex] = useState(defaultIndex || 0);
   const [width, setWidth] = useState(0);
@@ -13,7 +18,7 @@ const Carousel = ({
     const carousel = window.document.querySelector('#carousel');
     setWidth(carousel.clientWidth);
     return () => undefined;
-  }, [auto]);
+  }, [auto, id]);
   const childrenView = children.map((child) => (
     <li className="slide">{child}</li>
   ));
@@ -45,43 +50,45 @@ const Carousel = ({
       }}
     />
   ));
-  return console.log(id) || (
-    <div className={className} id="carousel">
-      <button
-        type="button"
-        className="slide__button slide__button--next"
-        onClick={() => {
-          if (auto) {
-            clearTimeout(id);
-          }
-          moveToSlide(index + 1);
-        }}
-      >
-        {' '}
-        <i className="icon-chevron-right" />{' '}
-      </button>
-      <ul
-        className="slide__track"
-        style={{ transform: `translateX(-${index * width}px)` }}
-      >
-        {childrenView}
-      </ul>
-      <button
-        type="button"
-        className="slide__button slide__button--previous icon-right-arrow"
-        onClick={() => {
-          if (auto) {
-            clearTimeout(id);
-          }
-          moveToSlide(index - 1);
-        }}
-      >
-        <i className="icon-chevron-left" />{' '}
-      </button>
-      {indicators && (
-        <div className="indicator-container">{indicatorsView}</div>
-      )}
-    </div>
+  return (
+    console.log(id) || (
+      <div className={className} id="carousel">
+        <button
+          type="button"
+          className="slide__button slide__button--next"
+          onClick={() => {
+            if (auto) {
+              clearTimeout(id);
+            }
+            moveToSlide(index + 1);
+          }}
+        >
+          {' '}
+          <i className="icon-chevron-right" />{' '}
+        </button>
+        <ul
+          className="slide__track"
+          style={{ transform: `translateX(-${index * width}px)` }}
+        >
+          {childrenView}
+        </ul>
+        <button
+          type="button"
+          className="slide__button slide__button--previous icon-right-arrow"
+          onClick={() => {
+            if (auto) {
+              clearTimeout(id);
+            }
+            moveToSlide(index - 1);
+          }}
+        >
+          <i className="icon-chevron-left" />{' '}
+        </button>
+        {indicators && (
+          <div className="indicator-container">{indicatorsView}</div>
+        )}
+      </div>
+    )
   );
 };
 

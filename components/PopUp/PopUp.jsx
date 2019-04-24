@@ -10,9 +10,7 @@ const PopUp = ({
       className="modal__close-icon"
       onClick={() => close()}
     />
-    <div className="modal">
-      {children}
-    </div>
+    <div className="modal">{children}</div>
   </div>
 );
 export default withStyle(PopUp);
