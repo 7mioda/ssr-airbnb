@@ -6,13 +6,12 @@ import ImageMosaic from '../ImageMosaic/ImageMosaic';
 const ImageMosaicCarousel = ({ children }) => {
   const [visible, setVisible] = useState(false);
   const [index, setIndex] = useState(0);
-  const carouselRef = useRef(null);
   const showImageInCarousel = (x) => {
     setIndex(x);
     setVisible(true);
   };
   return (
-    <div style={{ position: 'relative' }} ref={carouselRef}>
+    <div style={{ position: 'relative' }}>
       <Popup visible={visible} close={() => setVisible(false)}>
         <div style={{ width: '70vw', height: '80vh', position: 'relative' }}>
           <Carousel defaultIndex={index} auto indicators>
