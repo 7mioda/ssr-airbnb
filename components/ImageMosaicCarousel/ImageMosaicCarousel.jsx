@@ -3,7 +3,6 @@ import Popup from '../PopUp/PopUp';
 import Carousel from '../Carousel/Carousel';
 import ImageMosaic from '../ImageMosaic/ImageMosaic';
 
-
 const ImageMosaicCarousel = ({ children }) => {
   const [visible, setVisible] = useState(false);
   const [index, setIndex] = useState(0);
@@ -17,11 +16,16 @@ const ImageMosaicCarousel = ({ children }) => {
       <Popup visible={visible} close={() => setVisible(false)}>
         <div style={{ width: '70vw', height: '80vh', position: 'relative' }}>
           <Carousel defaultIndex={index} auto indicators>
-            { children }
+            {children}
           </Carousel>
         </div>
       </Popup>
-      <ImageMosaic height="95vh" width="100%" onImageClick={showImageInCarousel} onClick={() => setVisible(!visible)}>
+      <ImageMosaic
+        height="95vh"
+        width="100%"
+        onImageClick={showImageInCarousel}
+        onClick={() => setVisible(!visible)}
+      >
         {children}
       </ImageMosaic>
     </div>
