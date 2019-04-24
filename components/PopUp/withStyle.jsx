@@ -12,14 +12,9 @@ export default (component) => styled(component)`
   top: 0;
   width: 100%;
   height: 100%;
-  overflow: hidden;
   background-color: rgba(0, 0, 0, 0.67);
   .modal {
     position: absolute;
-    width: 45%;
-    min-width: 300px;
-    max-width: 586px;
-    padding: 60px 25px 25px 25px;
     left: 50%;
     top: 50vh;
     transform: translate(-50%, -50%);
