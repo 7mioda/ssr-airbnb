@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import ids from 'short-id';
 import withStyle from './withStyle';
 
 const Carousel = ({
@@ -17,11 +18,14 @@ const Carousel = ({
     }
     const carousel = window.document.querySelector('#carousel');
     setWidth(carousel.clientWidth);
-    return () => undefined;
-  }, [auto, id]);
-  const childrenView = children.map((child) => (
-    <li className="slide">{child}</li>
-  ));
+    window.addEventListener('resize', () => {
+      if (auto) {
+        clearTimeout(id);
+      }
+      setWidth(carousel.clientWidth);
+    });
+    return () => window.removeEventListener('resize', () => undefined);
+  }, [auto]);
   const moveToSlide = (targetIndex) => {
     if (targetIndex === children.length) {
       setIndex(0);
@@ -50,8 +54,14 @@ const Carousel = ({
       }
     }
   };
+  const childrenView = children.map((child) => (
+    <li className="slide" key={ids.generate()}>
+      {child}
+    </li>
+  ));
   const indicatorsView = children.map((child, i) => (
     <button
+      key={ids.generate()}
       type="button"
       className={`indicator ${index === i ? 'active' : ''}`}
       onClick={() => {
@@ -63,7 +73,11 @@ const Carousel = ({
     />
   ));
   return (
-    <div className={className} id="carousel" onKeyDown={(event) => keysAction(event)} onKeyPress={() => console.log('onKeyPress')} onFocus={(event) => console.log('sssss')}>
+    <div
+      className={className}
+      id="carousel"
+      onKeyDown={(event) => keysAction(event)}
+    >
       <button
         type="button"
         className="slide__button slide__button--next"
