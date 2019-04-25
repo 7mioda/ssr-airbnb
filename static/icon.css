@@ -26,7 +26,11 @@ i {
 
 .icon-chevron-left:before {
     content: "\e900";
+    color: inherit;
+    font-size: 30px;
 }
 .icon-chevron-right:before {
     content: "\e901";
+    color: inherit;
+    font-size: 30px;
 }

@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import Popup from '../PopUp/PopUp';
 import Carousel from '../Carousel/Carousel';
 import ImageMosaic from '../ImageMosaic/ImageMosaic';
@@ -14,7 +14,7 @@ const ImageMosaicCarousel = ({ children }) => {
     <div style={{ position: 'relative' }}>
       <Popup visible={visible} close={() => setVisible(false)}>
         <div style={{ width: '70vw', height: '80vh', position: 'relative' }}>
-          <Carousel defaultIndex={index} auto indicators>
+          <Carousel defaultIndex={index} indicators>
             {children}
           </Carousel>
         </div>

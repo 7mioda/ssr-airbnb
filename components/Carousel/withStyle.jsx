@@ -35,21 +35,31 @@ export default (component) => styled(component)`
     outline: none;
     display: inline-block;
     position: absolute;
+    border-radius: 50%;
     top: 50%;
     transform: translateY(-50%);
-    height: 20px;
-    width: 20px;
+    height: 31px;
+    width: 31px;
+    color: #ffffff;
     background: transparent;
     cursor: pointer;
     z-index: 10;
+    transition: all ease-in-out 0.3s;
   }
 
   .slide__button--next {
-    right: 0;
+    right: 2px;
   }
 
   .slide__button--previous {
-    left: 0;
+    left: 2px;
+  }
+
+  .slide__button:hover,
+  .slide__button:focus,
+  .slide__button:active {
+    color: rgba(0, 0, 0, 0.3);
+    background: #fff;
   }
 
   .indicator-container {
@@ -66,12 +76,15 @@ export default (component) => styled(component)`
     height: 8px;
     width: 5px;
     cursor: pointer;
-    transition: all ease-in-out 0.2s;
+    transform: translateY(0);
+    transition: all ease-in-out 0.5s;
   }
 
   .indicator.active {
     border-radius: 20%;
     height: 5px;
     width: 8px;
+    padding-bottom: 1px;
+    transform: translateY(-2px);
   }
 `;
