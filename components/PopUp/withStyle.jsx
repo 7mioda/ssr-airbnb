@@ -13,13 +13,15 @@ export default (component) => styled(component)`
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.67);
+  animation: fadeIn 0.5s both;
   .modal {
     position: absolute;
     left: 50%;
     top: 50vh;
-    transform: translate(-50%, -50%);
     background-color: #fff;
     z-index: 10;
+    transform: translate(-50%, -50%);
+    animation: slideFromTop 0.5s both 0.1s;
   }
   .modal__close-icon {
     position: absolute;
@@ -31,5 +33,22 @@ export default (component) => styled(component)`
     outline: none;
     border: none;
     border-radius: 50%;
+  }
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideFromTop {
+    from {
+      transform: translate(-50%, -500px);
+    }
+    to {
+      transform: translate(-50%, -50%);
+    }
   }
 `;
