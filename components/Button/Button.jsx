@@ -4,14 +4,12 @@ import PropTypes from 'prop-types';
 import withStyle from './withStyle';
 
 const Button = (props) => {
-  const buildClassName = (x) => ['outline', 'rounded', 'regular'].reduce(
-    (accumulator, currentValue) => {
-      if (_.get(x, currentValue, undefined) !== undefined) {
-        return `${accumulator} ${currentValue}`;
-      }
-      return accumulator;
+  const buildClassName = (x) => ['outline', 'rounded', 'regular'].reduce((accumulator, currentValue) => {
+    if (_.get(x, currentValue, undefined) !== undefined) {
+      return `${accumulator} ${currentValue}`;
     }
-  );
+    return accumulator;
+  });
 
   const { className, children, ...rest } = props;
   return (

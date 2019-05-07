@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import withStyle from './withStyleItem';
 import { MenuContext } from './Menu';
 
-
 const MenuItem = ({
   className, title, content, ...rest
 }) => {
@@ -22,9 +21,8 @@ const MenuItem = ({
       >
         {title}
       </button>
-      {context.activeItem === title && content(
-        <div className="menu-item__dropdown">{content}</div>
-      )}
+      {context.activeItem === title
+        && content(<div className="menu-item__dropdown">{content}</div>)}
     </div>
   );
 };
@@ -38,6 +36,5 @@ MenuItem.propTypes = {
 MenuItem.defaultProps = {
   content: undefined,
 };
-
 
 export default withStyle(MenuItem);

@@ -22,5 +22,4 @@ Menu.propTypes = {
   className: PropTypes.string.isRequired,
 };
 
-
 export default withStyle(Menu);
