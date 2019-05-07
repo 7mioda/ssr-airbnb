@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import withStyle from './withStyle';
 
 const ImageMosaic = ({
@@ -26,5 +27,14 @@ const ImageMosaic = ({
     </div>
   </div>
 );
+
+ImageMosaic.propTypes = {
+  className: PropTypes.string.isRequired,
+  onImageClick: PropTypes.func,
+};
+
+ImageMosaic.defaultProps = {
+  onImageClick: (index) => index,
+};
 
 export default withStyle(ImageMosaic);

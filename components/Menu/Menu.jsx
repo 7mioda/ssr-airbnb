@@ -1,4 +1,5 @@
 import React, { createContext, useState } from 'react';
+import PropTypes from 'prop-types';
 import withStyle from './withStyle';
 
 export const MenuContext = createContext({
@@ -16,5 +17,10 @@ const Menu = ({ className, children }) => {
     </div>
   );
 };
+
+Menu.propTypes = {
+  className: PropTypes.string.isRequired,
+};
+
 
 export default withStyle(Menu);
