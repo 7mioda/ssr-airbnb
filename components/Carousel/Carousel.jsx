@@ -15,18 +15,20 @@ const Carousel = ({
   const [width, setWidth] = useState(0);
   useEffect(() => {
     if (auto) {
-      clearTimeout(id);
+      const timeOut = setTimeout(() => {
+        moveToSlide(index + 1);
+      }, time || 5000);
+      return () => clearTimeout(timeOut);
     }
-    const carousel = window.document.querySelector('#carousel');
-    setWidth(carousel.clientWidth);
+    return () => undefined;
+  }, [auto, index]);
+  // Force Component to update while resizing to recalculate width
+  useEffect(() => {
     window.addEventListener('resize', () => {
-      if (auto) {
-        clearTimeout(id);
-      }
-      setWidth(carousel.clientWidth);
+      setIndex(index);
+      return () => undefined;
     });
-    return () => window.removeEventListener('resize', () => undefined);
-  }, [auto, id]);
+  }, []);
   const moveToSlide = (targetIndex) => {
     if (targetIndex === children.length) {
       setIndex(0);
@@ -36,22 +38,12 @@ const Carousel = ({
       setIndex(targetIndex);
     }
   };
-  const autoSlide = () => setTimeout(() => {
-    moveToSlide(index + 1);
-  }, time || 5000);
-  let id;
-  if (auto) {
-    id = autoSlide();
-  }
   const keysAction = ({ keyCode }) => {
     if (keyCode === 39 || keyCode === 37) {
       if (keyCode === 39) {
         moveToSlide(index + 1);
       } else if (keyCode === 37) {
         moveToSlide(index - 1);
-      }
-      if (auto) {
-        clearInterval(id);
       }
     }
   };
@@ -65,29 +57,23 @@ const Carousel = ({
       key={ids.generate()}
       type="button"
       className={`indicator ${index === i ? 'active' : ''}`}
-      onClick={() => {
-        if (auto) {
-          clearTimeout(id);
-        }
-        setIndex(i);
-      }}
+      onClick={() => setIndex(i)}
     />
   ));
-  return (
+  return console.log('render') || (
     <div
       className={className}
       id="carousel"
+      ref={(el) => {
+        if (!el) return;
+        setWidth(el.getBoundingClientRect().width);
+      }}
       onKeyDown={(event) => keysAction(event)}
     >
       <button
         type="button"
         className="slide__button slide__button--next"
-        onClick={() => {
-          if (auto) {
-            clearTimeout(id);
-          }
-          moveToSlide(index + 1);
-        }}
+        onClick={() => moveToSlide(index + 1)}
       >
         {' '}
         <i className="icon-chevron-right" />{' '}
@@ -101,12 +87,7 @@ const Carousel = ({
       <button
         type="button"
         className="slide__button slide__button--previous icon-right-arrow"
-        onClick={() => {
-          if (auto) {
-            clearTimeout(id);
-          }
-          moveToSlide(index - 1);
-        }}
+        onClick={() => moveToSlide(index - 1)}
       >
         <i className="icon-chevron-left" />{' '}
       </button>
@@ -132,4 +113,4 @@ Carousel.defaultProps = {
   defaultIndex: 0,
 };
 
-export default withStyle(Carousel);
+export default React.memo(withStyle(Carousel));
