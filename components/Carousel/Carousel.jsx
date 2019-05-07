@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import ids from 'short-id';
 import withStyle from './withStyle';
 
@@ -25,7 +26,7 @@ const Carousel = ({
       setWidth(carousel.clientWidth);
     });
     return () => window.removeEventListener('resize', () => undefined);
-  }, [auto]);
+  }, [auto, id]);
   const moveToSlide = (targetIndex) => {
     if (targetIndex === children.length) {
       setIndex(0);
@@ -114,6 +115,21 @@ const Carousel = ({
       )}
     </div>
   );
+};
+
+Carousel.propTypes = {
+  className: PropTypes.string.isRequired,
+  time: PropTypes.number,
+  auto: PropTypes.bool,
+  indicators: PropTypes.bool,
+  defaultIndex: PropTypes.number,
+};
+
+Carousel.defaultProps = {
+  time: 5000,
+  auto: false,
+  indicators: false,
+  defaultIndex: 0,
 };
 
 export default withStyle(Carousel);

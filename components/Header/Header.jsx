@@ -72,7 +72,7 @@ const Header = ({
       {connected && (
         <div className="nav-item">
           <div
-            onClick={event => {
+            onClick={(event) => {
               event.stopPropagation();
               toggleMenu('messages');
             }}
@@ -82,8 +82,7 @@ const Header = ({
           <div className="dropdwon-menu" hidden={!(dropDown === 'messages')}>
             <div
               className="dropdown-menu-item"
-              onClick={() =>
-                history.push('/airbnb.fr/users/edit?from_user_menu=1')
+              onClick={() => history.push('/airbnb.fr/users/edit?from_user_menu=1')
               }
             >
               Profil
@@ -116,8 +115,7 @@ const Header = ({
           <div className="dropdwon-menu" hidden={!(dropDown === 'user')}>
             <div
               className="dropdown-menu-item"
-              onClick={() =>
-                history.push('/airbnb.fr/users/edit?from_user_menu=1')
+              onClick={() => history.push('/airbnb.fr/users/edit?from_user_menu=1')
               }
             >
               Profil
@@ -160,7 +158,7 @@ export default compose(
   }),
   graphql(TOGGLE_MENU, {
     props: ({ mutate }) => ({
-      toggleMenu: dropDown => mutate({ variables: { dropDown } }),
+      toggleMenu: (dropDown) => mutate({ variables: { dropDown } }),
     }),
   }),
   graphql(MENU_STATUS, {

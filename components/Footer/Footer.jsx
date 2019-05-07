@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import withStyle from './withStyle';
 
 const Footer = ({ className }) => (
@@ -47,5 +48,9 @@ const Footer = ({ className }) => (
     </div>
   </footer>
 );
+
+Footer.propTypes = {
+  className: PropTypes.string.isRequired,
+};
 
 export default withStyle(Footer);

@@ -1,5 +1,6 @@
 import React from 'react';
 import _ from 'lodash';
+import PropTypes from 'prop-types';
 import withStyle from './withStyle';
 
 const Button = (props) => {
@@ -11,7 +12,7 @@ const Button = (props) => {
       return accumulator;
     }
   );
-  console.log(buildClassName(props));
+
   const { className, children, ...rest } = props;
   return (
     <div className={className}>
@@ -25,4 +26,9 @@ const Button = (props) => {
     </div>
   );
 };
+
+Button.propTypes = {
+  className: PropTypes.string.isRequired,
+};
+
 export default withStyle(Button);

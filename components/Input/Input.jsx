@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import withStyle from './withStyle';
 
 const Input = ({
@@ -18,5 +19,18 @@ const Input = ({
     )}
   </div>
 );
+
+Input.propTypes = {
+  className: PropTypes.string.isRequired,
+  rounded: PropTypes.bool,
+  Prefix: PropTypes.object,
+  Suffix: PropTypes.object,
+};
+
+Input.defaultProps = {
+  rounded: false,
+  Prefix: undefined,
+  Suffix: undefined,
+};
 
 export default withStyle(Input);
