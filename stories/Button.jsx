@@ -5,7 +5,7 @@ import Button from '../components/Button/Button';
 storiesOf('Button', module)
   .add('with text', () => (
     <Button
-      background="grey"
+      background="pink"
       color="white"
       onClick={() => alert("I'am clickable")}
     >

@@ -36,6 +36,7 @@
   "dependencies": {
     "@storybook/addon-viewport": "^5.0.10",
     "@storybook/react": "^5.0.10",
+    "@zeit/next-css": "^1.0.1",
     "apollo-cache-inmemory": "^1.5.1",
     "apollo-client": "^2.5.1",
     "apollo-link": "^1.2.9",
@@ -49,6 +50,7 @@
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-apollo": "^2.5.4",
+    "react-dates": "^20.2.0",
     "react-dom": "^16.8.6",
     "short-id": "^0.1.0-1",
     "styled-components": "^4.2.0"

@@ -22,7 +22,10 @@ export default (component) => styled(component)`
     padding: ${({ padding }) => padding || '0 20px'};
   }
 
-  input:focus {
+  .highlighted {
+  }
+
+  .highlighted:focus {
     border: 1px solid rgba(128, 128, 128, 0.9);
   }
 

@@ -1,7 +1,8 @@
 import Head from 'next/head';
-import Header from '../components/Header/Header';
 import Footer from '../components/Footer/Footer';
-
+import HomeBanner from '../components/HomeBanner/HomeBanner';
+import CssReseter from '../lib/reset-css';
+import HomeListing from '../components/HomeListing/HomeListing';
 
 const Index = () => (
   <div>
@@ -13,8 +14,10 @@ const Index = () => (
         rel="stylesheet"
       />
     </Head>
-    <Header />
-    <p>Hello Next.js</p>
+    <CssReseter />
+    <HomeBanner />
+
+    {/*<HomeListing />*/}
     <Footer />
   </div>
 );
