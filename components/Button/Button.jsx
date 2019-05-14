@@ -1,17 +1,21 @@
 import React from 'react';
-import _ from 'lodash';
+import { get } from 'lodash';
 import PropTypes from 'prop-types';
 import withStyle from './withStyle';
 
 const Button = (props) => {
-  const buildClassName = (x) => ['outline', 'rounded', 'regular'].reduce((accumulator, currentValue) => {
-    if (_.get(x, currentValue, undefined) !== undefined) {
-      return `${accumulator} ${currentValue}`;
-    }
-    return accumulator;
-  });
-
-  const { className, children, ...rest } = props;
+  const {
+    className, children, classNames, ...rest
+  } = props;
+  const buildClassName = (x) => ['outline', 'rounded', 'regular']
+    .map((currentValue) => {
+      if (get(x, currentValue, undefined) === true) {
+        return currentValue;
+      }
+      return null;
+    })
+    .concat(classNames)
+    .join(' ');
   return (
     <div className={className}>
       <button
@@ -27,6 +31,11 @@ const Button = (props) => {
 
 Button.propTypes = {
   className: PropTypes.string.isRequired,
+  classNames: PropTypes.array,
+};
+
+Button.defaultProps = {
+  classNames: [],
 };
 
 export default withStyle(Button);

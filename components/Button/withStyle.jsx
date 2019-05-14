@@ -12,17 +12,18 @@ export default (component) => styled(component)`
     height: 50px;
     padding: 0 2em;
     outline: none;
-    border-radius: 10px;
+    border-radius: 4px;
     font-family: inherit, sans-serif;
-    text-transform: uppercase;
+    text-transform: capitalize;
     font-size: 12px;
     color: ${({ color }) => color || 'white'};
-    background: ${({ background }) => background || 'grey'};
+    background: ${({ background }) => background || 'pink'};
     cursor: pointer;
     transition: all ease-in-out 0.3s;
   }
 
   .btn:hover {
+    border: ${({ background }) => `1px solid ${background}` || '1px solid grey'};
     color: ${({ background }) => background || 'grey'};
     background: ${({ color }) => color || 'white'};
   }

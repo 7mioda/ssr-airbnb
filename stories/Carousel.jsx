@@ -24,7 +24,7 @@ storiesOf('Carousel', module)
   ))
   .add('Rectangular Carousel with Images', () => (
     <div style={{ width: '500px', height: '500px' }}>
-      <Carousel height="400" width="400">
+      <Carousel>
         <img src={imageFile} alt="" />
         <img src={imageFile1} alt="" />
         <img src={imageFile2} alt="" />
