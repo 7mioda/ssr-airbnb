@@ -60,9 +60,10 @@ const Carousel = ({
       onClick={() => setIndex(i)}
     />
   ));
-  return console.log('render') || (
+  return (
     <div
       className={className}
+      data-testid="carousel"
       id="carousel"
       ref={(el) => {
         if (!el) return;
