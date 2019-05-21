@@ -195,6 +195,8 @@ var Carousel = function Carousel(_ref) {
       className = _ref.className,
       time = _ref.time,
       auto = _ref.auto,
+      _ref$itemNumber = _ref.itemNumber,
+      itemNumber = _ref$itemNumber === void 0 ? 1 : _ref$itemNumber,
       indicators = _ref.indicators,
       defaultIndex = _ref.defaultIndex;
 
@@ -221,7 +223,7 @@ var Carousel = function Carousel(_ref) {
     return function () {
       return undefined;
     };
-  }, [auto, index]); // Force Component to update while resizing to recalculate width
+  }, [auto, index, moveToSlide, time]); // Force Component to update while resizing to recalculate width
 
   Object(react__WEBPACK_IMPORTED_MODULE_1__["useEffect"])(function () {
     window.addEventListener('resize', function () {
@@ -230,13 +232,13 @@ var Carousel = function Carousel(_ref) {
         return undefined;
       };
     });
-  }, []);
+  }, [index]);
 
   var moveToSlide = function moveToSlide(targetIndex) {
-    if (targetIndex === children.length) {
+    if (targetIndex === children.length - itemNumber + 1) {
       setIndex(0);
     } else if (targetIndex < 0) {
-      setIndex(children.length - 1);
+      setIndex(children.length - itemNumber);
     } else {
       setIndex(targetIndex);
     }
@@ -292,7 +294,7 @@ var Carousel = function Carousel(_ref) {
   }), ' '), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("ul", {
     className: "slide__track",
     style: {
-      transform: "translateX(-".concat(index * width, "px)")
+      transform: "translateX(-".concat(index * (width / itemNumber), "px)")
     }
   }, childrenView), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
     type: "button",
@@ -339,11 +341,17 @@ __webpack_require__.r(__webpack_exports__);
   return Object(styled_components__WEBPACK_IMPORTED_MODULE_0__["default"])(component).withConfig({
     displayName: "withStyle",
     componentId: "sc-1cd5xb4-0"
-  })(["width:100%;height:100%;position:relative;overflow:hidden;*{margin:0;padding:0;}.slide *{object-fit:cover;width:100%;height:100%;}.slide{display:inline-block;width:calc(100% / ", ");height:100%;}.slide__track{width:calc(100% * ", ");height:100%;list-style:none;padding:0;margin:0;transition:transform ease-in 0.7s;}.slide__button{border:none;outline:none;display:inline-block;position:absolute;border-radius:50%;top:50%;transform:translateY(-50%);height:31px;width:31px;color:#ffffff;background:transparent;cursor:pointer;z-index:10;transition:all ease-in-out 0.3s;}.slide__button--next{right:2px;}.slide__button--previous{left:2px;}.slide__button:hover,.slide__button:focus,.slide__button:active{color:rgba(0,0,0,0.3);background:#fff;}.indicator-container{position:absolute;bottom:12px;left:50%;transform:translateX(-50%);}.indicator{border:none;outline:none;margin-left:5px;border-radius:50%;height:8px;width:5px;cursor:pointer;transform:translateY(0);transition:all ease-in-out 0.5s;}.indicator.active{border-radius:20%;height:5px;width:8px;padding-bottom:1px;transform:translateY(-2px);}"], function (_ref) {
-    var children = _ref.children;
-    return children.length;
+  })(["width:100%;height:100%;position:relative;overflow:hidden;*{margin:0;padding:0;}.slide *{object-fit:cover;width:100%;height:100%;}.slide{display:inline-block;width:calc( 100% / ", " );margin-right:", ";height:100%;}.slide__track{width:calc(100% * ", ");height:100%;list-style:none;padding:0;margin:0;transition:transform ease-in 0.7s;}.slide__button{border:none;outline:none;display:inline-block;position:absolute;border-radius:50%;top:50%;transform:translateY(-50%);height:31px;width:31px;color:#ffffff;background:transparent;cursor:pointer;z-index:10;transition:all ease-in-out 0.3s;}.slide__button--next{right:2px;}.slide__button--previous{left:2px;}.slide__button:hover,.slide__button:focus,.slide__button:active{color:rgba(0,0,0,0.3);background:#fff;}.indicator-container{position:absolute;bottom:12px;left:50%;transform:translateX(-50%);}.indicator{border:none;outline:none;margin-left:5px;border-radius:50%;height:8px;width:5px;cursor:pointer;transform:translateY(0);transition:all ease-in-out 0.5s;}.indicator.active{border-radius:20%;height:5px;width:8px;padding-bottom:1px;transform:translateY(-2px);}"], function (_ref) {
+    var children = _ref.children,
+        _ref$itemNumber = _ref.itemNumber,
+        itemNumber = _ref$itemNumber === void 0 ? 1 : _ref$itemNumber;
+    return children.length * itemNumber;
   }, function (_ref2) {
-    var children = _ref2.children;
+    var _ref2$itemNumber = _ref2.itemNumber,
+        itemNumber = _ref2$itemNumber === void 0 ? 1 : _ref2$itemNumber;
+    return itemNumber > 1 ? '20px' : '0';
+  }, function (_ref3) {
+    var children = _ref3.children;
     return children.length;
   });
 });
@@ -863,6 +871,200 @@ __webpack_require__.r(__webpack_exports__);
     displayName: "withStyle",
     componentId: "sc-104stcm-0"
   })(["position:relative;color:rgb(72,72,72);margin-top:30px;.airbnb-plus__banner{width:100%;height:300px;background:url(\"https://a0.muscache.com/4ea/air/v2/pictures/ea6285d9-5352-4447-b13d-b39bfc92dfe5.jpg?t=c:w1131-h343,r:w1131-h343-sfit,e:fjpg-c75\") center center / cover no-repeat;}& > h3{font-weight:100;margin-bottom:10px;}.airbnb-plus__btn{position:absolute;top:65%;left:50%;transform:translateX(-50%);width:274px;text-transform:uppercase;font-weight:500;}"]);
+});
+
+/***/ }),
+
+/***/ "./components/HomeRecommandation/HomeRecommandation.jsx":
+/*!**************************************************************!*\
+  !*** ./components/HomeRecommandation/HomeRecommandation.jsx ***!
+  \**************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _Carousel_Carousel__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../Carousel/Carousel */ "./components/Carousel/Carousel.jsx");
+/* harmony import */ var _withStyle__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./withStyle */ "./components/HomeRecommandation/withStyle.js");
+
+
+
+
+var HomeRecommandation = function HomeRecommandation(_ref) {
+  var className = _ref.className;
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "".concat(className)
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Nos recommandations")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Carousel_Carousel__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    itemNumber: 5
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "recommandation__item"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    className: "item__photo",
+    alt: "",
+    src: "https://a0.muscache.com/4ea/air/v2/pictures/8b7519ec-2c82-4c09-8233-fd4d2715bbf9.jpg"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "item__title"
+  }, "Logements")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "recommandation__item"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    className: "item__photo",
+    alt: "",
+    src: "https://a0.muscache.com/4ea/air/v2/pictures/cb8b3101-d419-4c17-8e2f-4989b39b98c3.jpg"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "item__title"
+  }, "Exp\xE9riences")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "recommandation__item"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    className: "item__photo",
+    alt: "",
+    src: "https://a0.muscache.com/4ea/air/v2/pictures/da2d8e97-90b7-409f-94ac-5ab0327c289b.jpg"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "item__title"
+  }, "Restaurants")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "recommandation__item"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    className: "item__photo",
+    alt: "",
+    src: "https://a0.muscache.com/4ea/air/v2/pictures/8b7519ec-2c82-4c09-8233-fd4d2715bbf9.jpg"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "item__title"
+  }, "Logements")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "recommandation__item"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    className: "item__photo",
+    alt: "",
+    src: "https://a0.muscache.com/4ea/air/v2/pictures/cb8b3101-d419-4c17-8e2f-4989b39b98c3.jpg"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "item__title"
+  }, "Exp\xE9riences")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "recommandation__item"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    className: "item__photo",
+    alt: "",
+    src: "https://a0.muscache.com/4ea/air/v2/pictures/da2d8e97-90b7-409f-94ac-5ab0327c289b.jpg"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "item__title"
+  }, "Restaurants")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "recommandation__item"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    className: "item__photo",
+    alt: "",
+    src: "https://a0.muscache.com/4ea/air/v2/pictures/8b7519ec-2c82-4c09-8233-fd4d2715bbf9.jpg"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "item__title"
+  }, "Logements")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "recommandation__item"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    className: "item__photo",
+    alt: "",
+    src: "https://a0.muscache.com/4ea/air/v2/pictures/cb8b3101-d419-4c17-8e2f-4989b39b98c3.jpg"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "item__title"
+  }, "Exp\xE9riences")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "recommandation__item"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    className: "item__photo",
+    alt: "",
+    src: "https://a0.muscache.com/4ea/air/v2/pictures/da2d8e97-90b7-409f-94ac-5ab0327c289b.jpg"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "item__title"
+  }, "Restaurants")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "recommandation__item"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    className: "item__photo",
+    alt: "",
+    src: "https://a0.muscache.com/4ea/air/v2/pictures/8b7519ec-2c82-4c09-8233-fd4d2715bbf9.jpg"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "item__title"
+  }, "Logements")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "recommandation__item"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    className: "item__photo",
+    alt: "",
+    src: "https://a0.muscache.com/4ea/air/v2/pictures/cb8b3101-d419-4c17-8e2f-4989b39b98c3.jpg"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "item__title"
+  }, "Exp\xE9riences")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "recommandation__item"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    className: "item__photo",
+    alt: "",
+    src: "https://a0.muscache.com/4ea/air/v2/pictures/da2d8e97-90b7-409f-94ac-5ab0327c289b.jpg"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "item__title"
+  }, "Restaurants")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "recommandation__item"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    className: "item__photo",
+    alt: "",
+    src: "https://a0.muscache.com/4ea/air/v2/pictures/8b7519ec-2c82-4c09-8233-fd4d2715bbf9.jpg"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "item__title"
+  }, "Logements")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "recommandation__item"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    className: "item__photo",
+    alt: "",
+    src: "https://a0.muscache.com/4ea/air/v2/pictures/cb8b3101-d419-4c17-8e2f-4989b39b98c3.jpg"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "item__title"
+  }, "Exp\xE9riences")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "recommandation__item"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    className: "item__photo",
+    alt: "",
+    src: "https://a0.muscache.com/4ea/air/v2/pictures/da2d8e97-90b7-409f-94ac-5ab0327c289b.jpg"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "item__title"
+  }, "Restaurants")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "recommandation__item"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    className: "item__photo",
+    alt: "",
+    src: "https://a0.muscache.com/4ea/air/v2/pictures/8b7519ec-2c82-4c09-8233-fd4d2715bbf9.jpg"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "item__title"
+  }, "Logements")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "recommandation__item"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    className: "item__photo",
+    alt: "",
+    src: "https://a0.muscache.com/4ea/air/v2/pictures/cb8b3101-d419-4c17-8e2f-4989b39b98c3.jpg"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "item__title"
+  }, "Exp\xE9riences")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "recommandation__item"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    className: "item__photo",
+    alt: "",
+    src: "https://a0.muscache.com/4ea/air/v2/pictures/da2d8e97-90b7-409f-94ac-5ab0327c289b.jpg"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "item__title"
+  }, "Restaurants"))));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(_withStyle__WEBPACK_IMPORTED_MODULE_2__["default"])(HomeRecommandation));
+
+/***/ }),
+
+/***/ "./components/HomeRecommandation/withStyle.js":
+/*!****************************************************!*\
+  !*** ./components/HomeRecommandation/withStyle.js ***!
+  \****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+
+/* harmony default export */ __webpack_exports__["default"] = (function (component) {
+  return Object(styled_components__WEBPACK_IMPORTED_MODULE_0__["default"])(component).withConfig({
+    displayName: "withStyle",
+    componentId: "xuvbhh-0"
+  })(["margin:20px auto;color:rgb(72,72,72);h2{margin-bottom:20px;}.recommandation__item{position:relative;display:inline-block;width:100%;height:300px;background-color:transparent;border:1px solid rgba(0,0,0,0.1);border-radius:3px;box-shadow:rgba(0,0,0,0.06) 0 2px 4px 0;cursor:pointer;}.item__photo{width:100%;height:100%;object-fit:cover;}.item__title{display:inline;position:absolute;top:90%;left:30%;color:#fff;font-weight:600;}"]);
 });
 
 /***/ }),
@@ -75238,10 +75440,10 @@ exports.default = withSideEffect;
 
 /***/ }),
 
-/***/ "./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2F&absolutePagePath=C%3A%5CUsers%5CAhmed%5CDesktop%5Cairbnb-ssr%5Cpages%5Cindex.js!./":
-/*!***************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2F&absolutePagePath=C%3A%5CUsers%5CAhmed%5CDesktop%5Cairbnb-ssr%5Cpages%5Cindex.js ***!
-  \***************************************************************************************************************************************************************************/
+/***/ "./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2F&absolutePagePath=C%3A%5CUsers%5CAhmed%5CDesktop%5Cairbnb%5Cairbnb-ssr%5Cpages%5Cindex.js!./":
+/*!************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2F&absolutePagePath=C%3A%5CUsers%5CAhmed%5CDesktop%5Cairbnb%5Cairbnb-ssr%5Cpages%5Cindex.js ***!
+  \************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -107730,6 +107932,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_6__);
 /* harmony import */ var _components_HomePlus_HomePlus__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../components/HomePlus/HomePlus */ "./components/HomePlus/HomePlus.jsx");
 /* harmony import */ var _components_HomeExplorer_HomeExplorer__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../components/HomeExplorer/HomeExplorer */ "./components/HomeExplorer/HomeExplorer.jsx");
+/* harmony import */ var _components_HomeRecommandation_HomeRecommandation__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../components/HomeRecommandation/HomeRecommandation */ "./components/HomeRecommandation/HomeRecommandation.jsx");
+
 
 
 
@@ -107752,7 +107956,7 @@ var Index = function Index() {
       maxWidth: '1520px',
       margin: '10px auto'
     }
-  }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_components_HomeExplorer_HomeExplorer__WEBPACK_IMPORTED_MODULE_8__["default"], null), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_components_HomePlus_HomePlus__WEBPACK_IMPORTED_MODULE_7__["default"], null), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_components_HomeListing_HomeListing__WEBPACK_IMPORTED_MODULE_4__["default"], null)), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_components_Footer_Footer__WEBPACK_IMPORTED_MODULE_1__["default"], null));
+  }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_components_HomeExplorer_HomeExplorer__WEBPACK_IMPORTED_MODULE_8__["default"], null), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_components_HomePlus_HomePlus__WEBPACK_IMPORTED_MODULE_7__["default"], null), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_components_HomeRecommandation_HomeRecommandation__WEBPACK_IMPORTED_MODULE_9__["default"], null), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_components_HomeListing_HomeListing__WEBPACK_IMPORTED_MODULE_4__["default"], null)), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_components_Footer_Footer__WEBPACK_IMPORTED_MODULE_1__["default"], null));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Index);
@@ -107760,13 +107964,13 @@ var Index = function Index() {
 /***/ }),
 
 /***/ 1:
-/*!*******************************************************************************************************************************!*\
-  !*** multi next-client-pages-loader?page=%2F&absolutePagePath=C%3A%5CUsers%5CAhmed%5CDesktop%5Cairbnb-ssr%5Cpages%5Cindex.js ***!
-  \*******************************************************************************************************************************/
+/*!****************************************************************************************************************************************!*\
+  !*** multi next-client-pages-loader?page=%2F&absolutePagePath=C%3A%5CUsers%5CAhmed%5CDesktop%5Cairbnb%5Cairbnb-ssr%5Cpages%5Cindex.js ***!
+  \****************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! next-client-pages-loader?page=%2F&absolutePagePath=C%3A%5CUsers%5CAhmed%5CDesktop%5Cairbnb-ssr%5Cpages%5Cindex.js! */"./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2F&absolutePagePath=C%3A%5CUsers%5CAhmed%5CDesktop%5Cairbnb-ssr%5Cpages%5Cindex.js!./");
+module.exports = __webpack_require__(/*! next-client-pages-loader?page=%2F&absolutePagePath=C%3A%5CUsers%5CAhmed%5CDesktop%5Cairbnb%5Cairbnb-ssr%5Cpages%5Cindex.js! */"./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2F&absolutePagePath=C%3A%5CUsers%5CAhmed%5CDesktop%5Cairbnb%5Cairbnb-ssr%5Cpages%5Cindex.js!./");
 
 
 /***/ }),

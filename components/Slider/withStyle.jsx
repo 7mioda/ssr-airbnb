@@ -17,7 +17,9 @@ export default (component) => styled(component)`
 
   .slide {
     display: inline-block;
-    width: calc(100% / ${({ children, itemNumber = 1 }) => children.length * itemNumber});
+    width: calc(
+      100% / ${({ children, itemNumber = 1 }) => children.length * itemNumber}
+    );
     height: 100%;
   }
 
@@ -87,22 +89,44 @@ export default (component) => styled(component)`
     padding-bottom: 1px;
     transform: translateY(-2px);
   }
-  
+
+  .slides {
+    width: 100%;
+    height: 100%;
+  }
+
+  .slides > * {
+    float: left;
+    width: calc(100% / 6);
+    height: 100%;
+    object-fit: cover;
+    margin: 0 10px;
+    animation: mymove 3s;
+  }
+  @keyframes mymove {
+    from {
+      transform: translateX(-100%);
+    }
+    to {
+      transform: translateX(0);
+    }
+  }
+
   .example-enter {
-  opacity: 0.01;
-}
+    opacity: 0.01;
+  }
 
-.example-enter.example-enter-active {
-  opacity: 1;
-  transition: opacity 500ms ease-in;
-}
+  .example-enter.example-enter-active {
+    opacity: 1;
+    transition: opacity 500ms ease-in;
+  }
 
-.example-leave {
-  opacity: 1;
-}
+  .example-leave {
+    opacity: 1;
+  }
 
-.example-leave.example-leave-active {
-  opacity: 0.01;
-  transition: opacity 300ms ease-in;
-}
+  .example-leave.example-leave-active {
+    opacity: 0.01;
+    transition: opacity 300ms ease-in;
+  }
 `;

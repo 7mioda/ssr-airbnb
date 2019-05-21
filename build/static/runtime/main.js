@@ -16447,7 +16447,7 @@ function connect(options) {
       error.name = err.name;
       error.stack = err.stack; // __NEXT_DIST_DIR is provided by webpack
 
-      source_map_support_1.rewriteStacktrace(error, "C:\\Users\\Ahmed\\Desktop\\airbnb-ssr\\build");
+      source_map_support_1.rewriteStacktrace(error, "C:\\Users\\Ahmed\\Desktop\\airbnb\\airbnb-ssr\\build");
       return error;
     }
   };
@@ -22668,7 +22668,7 @@ module.exports = {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\Ahmed\Desktop\airbnb-ssr\client\polyfills.js */"./client/polyfills.js");
+__webpack_require__(/*! C:\Users\Ahmed\Desktop\airbnb\airbnb-ssr\client\polyfills.js */"./client/polyfills.js");
 module.exports = __webpack_require__(/*! .\node_modules\next\dist\client\next-dev.js */"./node_modules/next/dist/client/next-dev.js");
 
 

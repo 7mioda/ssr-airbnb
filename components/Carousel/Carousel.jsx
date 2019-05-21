@@ -4,13 +4,14 @@ import ids from 'short-id';
 import withStyle from './withStyle';
 
 const Carousel = ({
-                    children,
-                    className,
-                    time,
-                    auto,
-                    indicators,
-                    defaultIndex,
-                  }) => {
+  children,
+  className,
+  time,
+  auto,
+  itemNumber = 1,
+  indicators,
+  defaultIndex,
+}) => {
   const [index, setIndex] = useState(defaultIndex || 0);
   const [width, setWidth] = useState(0);
   useEffect(() => {
@@ -21,19 +22,19 @@ const Carousel = ({
       return () => clearTimeout(timeOut);
     }
     return () => undefined;
-  }, [auto, index]);
+  }, [auto, index, moveToSlide, time]);
   // Force Component to update while resizing to recalculate width
   useEffect(() => {
     window.addEventListener('resize', () => {
       setIndex(index);
       return () => undefined;
     });
-  }, []);
+  }, [index]);
   const moveToSlide = (targetIndex) => {
-    if (targetIndex === children.length) {
+    if (targetIndex === children.length - itemNumber + 1) {
       setIndex(0);
     } else if (targetIndex < 0) {
-      setIndex(children.length - 1);
+      setIndex(children.length - itemNumber);
     } else {
       setIndex(targetIndex);
     }
@@ -81,7 +82,7 @@ const Carousel = ({
       </button>
       <ul
         className="slide__track"
-        style={{ transform: `translateX(-${index * width}px)` }}
+        style={{ transform: `translateX(-${index * (width / itemNumber)}px)` }}
       >
         {childrenView}
       </ul>

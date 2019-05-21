@@ -12,7 +12,7 @@ import imageFile5 from '../static/img/6.jpg';
 storiesOf('Carousel', module)
   .add('Carousel with Images', () => (
     <div style={{ width: '1024px', height: '500px' }}>
-      <Carousel itemNumber={5}>
+      <Carousel itemNumber={3}>
         <img src={imageFile} alt="" />
         <img src={imageFile1} alt="" />
         <img src={imageFile2} alt="" />
