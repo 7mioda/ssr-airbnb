@@ -294,7 +294,7 @@ var Carousel = function Carousel(_ref) {
   }), ' '), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("ul", {
     className: "slide__track",
     style: {
-      transform: "translateX(-".concat(index * (width / itemNumber), "px)")
+      transform: "translateX(-".concat(index * (width / itemNumber) + index * 20, "px)")
     }
   }, childrenView), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
     type: "button",

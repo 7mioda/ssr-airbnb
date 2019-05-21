@@ -82,7 +82,7 @@ const Carousel = ({
       </button>
       <ul
         className="slide__track"
-        style={{ transform: `translateX(-${index * (width / itemNumber)}px)` }}
+        style={{ transform: `translateX(-${(index * (width / itemNumber)) + (index * 20) }px)` }}
       >
         {childrenView}
       </ul>
