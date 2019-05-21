@@ -102,6 +102,7 @@ const HomeBanner = ({ className }) => {
           <div className="half" />
           <div className="half">
             <Button
+              animated
               color="white"
               background="#ff5a5f"
               classNames={['landing-search__btn']}

@@ -140,9 +140,9 @@ export default (component) => styled(component)`
   }
 
   @media only screen and (max-width: 750px) {
-    min-height: 100vh;
+    height: auto;
     .landing {
-      height: 70%;
+      height: 60vh;
       & h1 {
         display: inline-block;
       }

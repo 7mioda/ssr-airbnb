@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export default (component) => styled(component)`
-  width: calc((100% / 4) + 80px);
+  width: calc((100% / 4) - 1.5%);
   color: rgb(118, 118, 118);
   margin-left: 20px;
   font-size: 10px;
@@ -52,4 +52,27 @@ export default (component) => styled(component)`
     font-weight: 300;
     font-size: 12px;
   }
+  @media only screen and (min-width: 1260px)  and (max-width: 1350px) {
+    width: calc((100% / 2) - 3%);
+    margin-right: 1%;
+    &:nth-child(2n){
+    margin-right: 0;
+    }
+  }
+  @media only screen and (max-width: 1260px) {
+    width: calc((100% / 2) - 40px);
+    margin-right: 1%;
+    &:nth-child(2n){
+    margin-right: 0;
+    }
+  }
+  
+  @media only screen and (max-width: 650px) {
+    width: calc(100% - 40px);
+    margin-right: 20px;
+    margin-left: 20px;
+    }
+  }
+  
+
 `;

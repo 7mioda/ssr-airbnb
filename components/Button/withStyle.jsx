@@ -22,13 +22,13 @@ export default (component) => styled(component)`
     transition: all ease-in-out 0.3s;
   }
 
-  .btn:hover {
+  .animated:hover {
     border: ${({ background }) => `1px solid ${background}` || '1px solid grey'};
     color: ${({ background }) => background || 'grey'};
     background: ${({ color }) => color || 'white'};
   }
 
-  .btn:active {
+  .animated:active {
     transform: scale(0.95);
   }
 

@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import PropTypes from 'prop-types';
 import withStyle from './withStyleItem';
 import { MenuContext } from './Menu';
@@ -21,8 +22,15 @@ const MenuItem = ({
       >
         {title}
       </button>
-      {context.activeItem === title
-        && content(<div className="menu-item__dropdown">{content}</div>)}
+      <ReactCSSTransitionGroup
+        transitionName="drop"
+        transitionEnterTimeout={500}
+        transitionLeaveTimeout={300}
+      >
+        {context.activeItem === title && content && (
+          <div className="menu-item__dropdown">{content}</div>
+        )}
+      </ReactCSSTransitionGroup>
     </div>
   );
 };

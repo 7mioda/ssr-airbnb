@@ -4,13 +4,13 @@ import ids from 'short-id';
 import withStyle from './withStyle';
 
 const Carousel = ({
-  children,
-  className,
-  time,
-  auto,
-  indicators,
-  defaultIndex,
-}) => {
+                    children,
+                    className,
+                    time,
+                    auto,
+                    indicators,
+                    defaultIndex,
+                  }) => {
   const [index, setIndex] = useState(defaultIndex || 0);
   const [width, setWidth] = useState(0);
   useEffect(() => {

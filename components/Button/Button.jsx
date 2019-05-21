@@ -7,7 +7,7 @@ const Button = (props) => {
   const {
     className, children, classNames, ...rest
   } = props;
-  const buildClassName = (x) => ['outline', 'rounded', 'regular']
+  const buildClassName = (x) => ['outline', 'animated', 'rounded', 'regular']
     .map((currentValue) => {
       if (get(x, currentValue, undefined) === true) {
         return currentValue;

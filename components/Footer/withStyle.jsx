@@ -6,6 +6,7 @@ export default (component) => styled(component)`
         background: #fff;
         color: #767676;
         border-top: .5px solid #F4F4F4;
+        font-family: sans-serif;
     
     .footer-column {
         float: left;
