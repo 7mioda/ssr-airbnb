@@ -23,11 +23,21 @@ export default (component) => styled(component)`
     object-fit: cover;
   }
   .item__title {
-    display: inline;
     position: absolute;
-    top: 90%;
-    left: 30%;
+    top: 0;
     color: #fff;
     font-weight: 600;
+    display: flex;
+    width: 100%;
+    background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0),
+        rgba(0, 0, 0, 0.2) 10%,
+        rgba(0, 0, 0, 0.4) 20%
+      );
+    height: 100%;
+    text-align: center;
+    justify-content: center;
+    align-items: flex-end;
   }
 `;
