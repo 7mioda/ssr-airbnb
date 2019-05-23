@@ -6,6 +6,7 @@ import HomeListing from '../components/HomeListing/HomeListing';
 import MenuWrapper from '../components/Menu/MenuWrapper';
 import React from 'react';
 import HomePlus from '../components/HomePlus/HomePlus'
+import Rater from '../components/Rater/Rater'
 import HomeExplorer from '../components/HomeExplorer/HomeExplorer';
 import HomeRecommandation from '../components/HomeRecommandation/HomeRecommandation';
 import HomeHost from '../components/HomeHost/HomeHost'
@@ -28,7 +29,7 @@ const Index = () => (
       <HomeExplorer />
       <HomePlus />
       <HomeRecommandation />
-      <HomeHost/>
+      <HomeHost />
       <HomeListing />
     </div>
     <Footer />

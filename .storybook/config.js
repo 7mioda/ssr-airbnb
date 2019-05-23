@@ -10,6 +10,7 @@ function loadStories() {
   require('../stories/PopUp.jsx');
   require('../stories/ImageMosaicCarousel.jsx');
   require('../stories/Menu.jsx');
+  require('../stories/Rater.jsx');
   // You can require as many stories as you need.
 }
 
